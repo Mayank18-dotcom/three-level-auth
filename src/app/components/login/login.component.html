@@ -1,0 +1,48 @@
+<body *ngIf="loader">
+  <h1 class="pldr">
+      <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
+  </h1>
+</body>
+<body *ngIf="!loader" class="bg-secondary">
+  <div class="container">
+      <div class="forms-container">
+          <br><br><br>
+        <div class="panel left-panel text-center">
+            <div class="content">
+            <h4>Want to SignIn instead ? Click below to SignIn</h4>
+            <button class="btn btn-primary" id="sign-up-btn" routerLink="/signup">
+               SignIn
+            </button>
+            </div>
+          </div>
+          <br><br>
+          <div class="signin-signup">
+            <h2 class="text-center">Login Form</h2>
+            <form class="card bg-dark">
+                <div class="form-group pl-5 pr-5 pt-5 ml-5 mr-5">
+                    <label class="text-light">Select Level</label> <br>
+                    <input type="radio" [(ngModel)]="loginUserData.level" value = 1 name="level"/><span class="text-light pl-2">1 </span><br>
+                    <input type="radio" [(ngModel)]="loginUserData.level" value = 2 name="level"/><span class="text-light pl-2">2 </span><br>
+                    <input type="radio" [(ngModel)]="loginUserData.level" value = 3 name="level"/><span class="text-light pl-2">3 </span><br>
+                </div>
+                <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+                    <label class="text-light">Username</label>
+                    <input class="form-control" type="text" placeholder="Username" [(ngModel)]="loginUserData.username" name="username"/>
+                </div>
+              <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+                <label class="text-light">Passcode</label>
+                <input class="form-control" type="number" placeholder="Passcode" [(ngModel)]="loginUserData.passcode" name="passcode"/>
+              </div>
+              <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5" *ngIf="loginUserData.level == 2 || loginUserData.level == 3">
+                <label class="text-light">Passphrase</label>
+                <input class="form-control" type="text" placeholder="Passphrase" [(ngModel)]="loginUserData.passphrase" name="passphrase"/>
+              </div>
+              <div class="text-center pb-5">
+                <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Login" />
+              </div>
+            </form>
+          </div>
+      </div>
+      <br><br>
+  </div>
+  </body>

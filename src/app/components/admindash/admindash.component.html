@@ -1,0 +1,50 @@
+<body *ngIf="loader" class="text-center bg-dark" style="margin-left: 20%;">
+    <h1 class="pldr">
+        <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
+    </h1>
+	<br><br><br><br><br><br><br>
+</body>
+<body *ngIf="!loader" class="bg-dark">
+    <br><br><br><br>
+    <h2 style="color: whitesmoke;" class="text-center">Welcome !</h2>
+    <div class="card card-1  text-md-center" id="card1" style="width: 50%;margin-left: 25%;padding-top: 50px;">
+    <table class="table table-hover">
+  <tbody>
+    <tr>
+      <td><span class="bold">Full Name</span></td>
+      <td>{{data["fullname"]}}</td> <br>
+    </tr>
+    <tr>
+        <td><span class="bold">Username</span></td>
+        <td>{{data["username"]}}
+      </tr>
+      <tr>
+        <td><span class="bold">Email</span></td>
+        <td>{{data["email"]}}</td>
+      </tr>
+      <tr>
+        <td><span class="bold">Phone Number</span></td>
+        <td>{{data["phno"]}}</td>
+      </tr>
+      <tr>
+        <td><span class="bold">Designation</span></td>
+        <td>{{data["designation"]}}</td>
+      </tr>
+      <tr>
+        <td><span class="bold">Date of birth</span></td>
+        <td>{{data["dob"]}}</td>
+      </tr>
+      <tr>
+        <td><span class="bold">Level</span></td>
+        <td>{{data["level"]}}</td>
+      </tr>
+      <tr>
+        <td><span class="bold">Passcode</span></td>
+        <td>{{data["passcode"]}}</td>
+      </tr>
+      <!-- || "---" -->
+  </tbody>
+</table>
+</div>
+<br><br><br><br>   <br>
+</body>

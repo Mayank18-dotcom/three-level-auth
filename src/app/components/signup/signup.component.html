@@ -1,0 +1,68 @@
+<body *ngIf="loader">
+  <h1 class="pldr">
+      <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="10000"></circle-progress>
+  </h1>
+</body>
+<body *ngIf="!loader" class=" bg-secondary">
+  <div class="container">
+    <br><br>
+      <div class="forms-container ">
+        <div class="panel left-panel text-center">
+          <div class="content">
+          <h4>Want to login instead ? Click below to login</h4>
+          <button class="btn btn-primary" id="sign-up-btn" routerLink="/login">
+             Login
+          </button>
+          </div>
+        </div>
+        <br><br><br>
+      <div class="signin-signup">
+        <h2 class="text-center">Sign - up Form</h2>
+        <form class="card bg-dark">
+          <div class="form-group pl-5 pr-5 pt-5 ml-5 mr-5">
+            <label class="text-light">Full Name</label>
+            <input class="form-control" type="text" placeholder="Enter Full Name" [(ngModel)]="registerUserData.fullname" name="fullname"/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Username</label>
+            <input class="form-control" type="text" placeholder="Enter Username" [(ngModel)]="registerUserData.username" name="username"/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Email</label>
+            <input class="form-control" type="email" placeholder="Enter Email" [(ngModel)]="registerUserData.email" name="email"/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Passcode (This is your unique auth key. Please Note it !)</label>
+            <input class="form-control" type="number" placeholder="Passcode" [(ngModel)]="registerUserData.passcode" name="passcode" disabled/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Designation</label>
+            <input class="form-control" type="text" placeholder="Enter Designation" [(ngModel)]="registerUserData.designation" name="designation"/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Date of Birth</label>
+            <input class="form-control" type="date" placeholder="Enter Date of Birth" [(ngModel)]="registerUserData.dob" name="dob"/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Phone Number</label>
+            <input class="form-control" type="number" placeholder="Enter Phone Number" [(ngModel)]="registerUserData.phno" name="phno"/>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Select Level</label> <br>
+            <input type="radio" [(ngModel)]="registerUserData.level" value = 1 name="level"/><span class="text-light pl-2">1 </span><br>
+            <input type="radio" [(ngModel)]="registerUserData.level" value = 2 name="level"/><span class="text-light pl-2">2 </span><br>
+            <input type="radio" [(ngModel)]="registerUserData.level" value = 3 name="level"/><span class="text-light pl-2">3 </span><br>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5" *ngIf="registerUserData.level == 2 || registerUserData.level == 3">
+            <label class="text-light">Passphrase</label>
+            <input class="form-control" type="text" placeholder="Enter Passphrase" [(ngModel)]="registerUserData.passphrase" name="passphrase"/>
+          </div>
+          <div class="text-center pb-5">
+            <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Sign up" />
+          </div>
+        </form>
+      </div>
+      <br>
+      </div>
+  </div>
+</body>
