@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
   loader = false;
   value : any;
   checkmail=/^([a-z 0-9 \.-]+)@([a-z 0-9 -]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
+  checkPhno = /^\d{10}$/;
   constructor(private service:AppService,public router:Router) { }
 
   ngOnInit() {
@@ -63,7 +64,8 @@ export class SignupComponent implements OnInit {
     },1000)
   }
   check(){
-    console.log(this.registerUserData);
+    var ph = (this.registerUserData.phno).toString();
+    console.log(ph);
     if (this.registerUserData.username == null || this.registerUserData.username.length <= 5 ){
       alert("Please provide username with length greater than 5 characters")
     }else if(this.registerUserData.email==null || this.checkmail.test(this.registerUserData.email)==false){
@@ -81,11 +83,8 @@ export class SignupComponent implements OnInit {
     else if(this.registerUserData.dob == null){
       alert("Please enter Date of birth")
     }
-    else if(this.registerUserData.phno == null || this.registerUserData.passphrase.length !== 10){
+    else if(this.registerUserData.phno ==null || this.checkRegno(ph)==false){
       alert("Please enter valid 10 digit phone number")
-    }
-    else if(this.registerUserData.level == null){
-      alert("Please select a level")
     }
     else if(this.registerUserData.level === 2 || this.registerUserData.level === 3){
       if(this.registerUserData.passphrase == null || this.registerUserData.passphrase.length <= 10){

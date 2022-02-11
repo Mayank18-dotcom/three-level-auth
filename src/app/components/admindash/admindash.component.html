@@ -6,8 +6,8 @@
 </body>
 <body *ngIf="!loader" class="bg-dark">
     <br><br><br><br>
-    <h2 style="color: whitesmoke;" class="text-center">Welcome !</h2>
-    <div class="card card-1  text-md-center" id="card1" style="width: 50%;margin-left: 25%;padding-top: 50px;">
+    <h1 style="color: whitesmoke;padding-bottom: 15%;padding-top: 15%;" class="text-center">Welcome {{data["fullname"]}} ! <br><h2 style="color: whitesmoke;">This is level {{data["level"]}}.</h2></h1>
+    <!-- <div class="card card-1  text-md-center" id="card1" style="width: 50%;margin-left: 25%;padding-top: 50px;">
     <table class="table table-hover">
   <tbody>
     <tr>
@@ -42,9 +42,8 @@
         <td><span class="bold">Passcode</span></td>
         <td>{{data["passcode"]}}</td>
       </tr>
-      <!-- || "---" -->
   </tbody>
-</table>
-</div>
+</table> 
+</div>-->
 <br><br><br><br>   <br>
 </body>
