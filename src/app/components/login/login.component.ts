@@ -8,8 +8,12 @@ export class User {
   public passcode: any;
   public passphrase : any;
   public level : any;
+  public phno : any;
 }
-
+export class VerifyOTPclass {
+  public phno : any;
+  public code : any;
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,10 +21,13 @@ export class User {
 })
 export class LoginComponent implements OnInit {
   loginUserData = new User();
+  OTP = new VerifyOTPclass();
   yes:any;
   yess:any;
+
+  otp : any;
   loader = false;
-  
+  isVerified = false;
   constructor(private service:AppService,public router:Router) { }
   loginUser () {
     this.loader = true;
@@ -57,6 +64,27 @@ export class LoginComponent implements OnInit {
         }
       ) 
     },1000)
+  }
+  funSendOTP(){
+    var ph = (this.loginUserData.phno).toString();
+    console.log(ph);
+    this.service.sendotpservice(this.loginUserData).subscribe((res:any)=>{
+      alert("OTP send successfully ! Please check your phone")
+      console.log(res);
+    })
+  }
+  funVerifyOTP(){
+    this.OTP.phno = this.loginUserData.phno;
+    console.log(this.OTP)
+    this.service.verifyotpservice(this.OTP).subscribe((res:any)=>{
+      if(res == "approved"){
+          this.isVerified = true;
+          alert("Phone Number verified !")
+      }
+      else{
+        alert("Wrong OTP. Enter Again")
+      }
+    })
   }
   check(){
     console.log(this.loginUserData)

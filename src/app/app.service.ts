@@ -16,6 +16,14 @@ export class AppService {
   {
    return this.http.post(this.url+'/user/login',user);
   }
+  sendotpservice(user)
+  {
+    return this.http.post(this.url+'/user/sendotp',user);
+  }
+  verifyotpservice(user)
+  {
+    return this.http.post(this.url+'/user/verifyotp',user);
+  }
   mainlink(user){
     return this.http.get(this.url+'/mainlink/'+user);
   }

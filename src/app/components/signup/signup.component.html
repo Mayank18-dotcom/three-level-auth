@@ -44,10 +44,6 @@
             <input class="form-control" type="date" placeholder="Enter Date of Birth" [(ngModel)]="registerUserData.dob" name="dob"/>
           </div>
           <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
-            <label class="text-light">Phone Number</label>
-            <input class="form-control" type="number" placeholder="Enter Phone Number" [(ngModel)]="registerUserData.phno" name="phno"/>
-          </div>
-          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
             <label class="text-light">Select Level</label> <br>
             <input type="radio" [(ngModel)]="registerUserData.level" value = 1 name="level"/><span class="text-light pl-2">1 </span><br>
             <input type="radio" [(ngModel)]="registerUserData.level" value = 2 name="level"/><span class="text-light pl-2">2 </span><br>
@@ -57,7 +53,27 @@
             <label class="text-light">Passphrase</label>
             <input class="form-control" type="text" placeholder="Enter Passphrase" [(ngModel)]="registerUserData.passphrase" name="passphrase"/>
           </div>
-          <div class="text-center pb-5">
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5">
+            <label class="text-light">Phone Number</label>
+            <input class="form-control" type="number" placeholder="Enter Phone Number" [(ngModel)]="registerUserData.phno" name="phno"/>
+          </div>
+          <div class="text-center" *ngIf="registerUserData.level == 3">
+            <button class="btn btn-primary w-10 text-center" (click)="funSendOTP()" value="Send OTP">Send OTP</button>
+          </div>
+          <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5" *ngIf="registerUserData.level == 3">
+            <label class="text-light">Verify OTP</label>
+            <input class="form-control" type="text" placeholder="Enter correct OTP" [(ngModel)]="OTP.code" [ngModelOptions]="{standalone: true}"/>
+          </div>
+          <div class="text-center pb-5" *ngIf="registerUserData.level == 3">
+            <button class="btn btn-primary w-10 text-center" (click)="funVerifyOTP()" value="Verify OTP">Verify OTP</button>
+          </div>
+          <div class="text-center pb-5" *ngIf="registerUserData.level != 3 ">
+            <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Sign up" />
+          </div>
+          <div class="text-center pb-5" *ngIf="registerUserData.level == 3 && isVerified == false">
+            <input type="submit" class="btn btn-secondary w-10 text-center" (click)="check()" value="Sign up" disabled/>
+          </div>
+          <div class="text-center pb-5" *ngIf="registerUserData.level == 3 && isVerified == true">
             <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Sign up" />
           </div>
         </form>

@@ -37,8 +37,28 @@
                 <label class="text-light">Passphrase</label>
                 <input class="form-control" type="text" placeholder="Passphrase" [(ngModel)]="loginUserData.passphrase" name="passphrase"/>
               </div>
-              <div class="text-center pb-5">
-                <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Login" />
+              <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5" *ngIf="loginUserData.level == 3">
+                <label class="text-light">Phone Number</label>
+                <input class="form-control" type="number" placeholder="Enter Phone Number"  name="phno" [(ngModel)]="loginUserData.phno"/>
+              </div>
+              <div class="text-center" *ngIf="loginUserData.level == 3">
+                <button class="btn btn-primary w-10 text-center" (click)="funSendOTP()" value="Send OTP">Send OTP</button>
+              </div>
+              <div class="form-group pl-5 pr-5 pt-3 ml-5 mr-5" *ngIf="loginUserData.level == 3">
+                <label class="text-light">Verify OTP</label>
+                <input class="form-control" type="number" placeholder="Enter correct OTP" [(ngModel)]="OTP.code" [ngModelOptions]="{standalone: true}"/>
+              </div>
+              <div class="text-center pb-5" *ngIf="loginUserData.level == 3">
+                <button class="btn btn-primary w-10 text-center" (click)="funVerifyOTP()" value="Verify OTP">Verify OTP</button>
+              </div>
+              <div class="text-center pb-5" *ngIf="loginUserData.level != 3 ">
+                <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Log In" />
+              </div>
+              <div class="text-center pb-5" *ngIf="loginUserData.level == 3 && isVerified == false">
+                <input type="submit" class="btn btn-secondary w-10 text-center" (click)="check()" value="Log In" disabled/>
+              </div>
+              <div class="text-center pb-5" *ngIf="loginUserData.level == 3 && isVerified == true">
+                <input type="submit" class="btn btn-success w-10 text-center" (click)="check()" value="Log In" />
               </div>
             </form>
           </div>

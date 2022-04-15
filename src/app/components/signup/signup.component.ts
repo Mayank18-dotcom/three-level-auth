@@ -14,6 +14,10 @@ export class User {
   public phno : any;
   public level : any;
 }
+export class VerifyOTPclass {
+  public phno : any;
+  public code : any;
+}
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -21,8 +25,11 @@ export class User {
 })
 export class SignupComponent implements OnInit {
   registerUserData = new User();
+  OTP = new VerifyOTPclass();
   loader = false;
   value : any;
+  isVerified = false;
+  otp : any;
   checkmail=/^([a-z 0-9 \.-]+)@([a-z 0-9 -]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
   checkPhno = /^\d{10}$/;
   constructor(private service:AppService,public router:Router) { }
@@ -62,6 +69,27 @@ export class SignupComponent implements OnInit {
         }
       )
     },1000)
+  }
+  funSendOTP(){
+    var ph = (this.registerUserData.phno).toString();
+    console.log(ph);
+    this.service.sendotpservice(this.registerUserData).subscribe((res:any)=>{
+      console.log(res);
+      alert("OTP send successfully ! Please check your phone")
+    })
+  }
+  funVerifyOTP(){
+    this.OTP.phno = this.registerUserData.phno;
+    console.log(this.OTP)
+    this.service.verifyotpservice(this.OTP).subscribe((res:any)=>{
+      if(res == "approved"){
+          this.isVerified = true;
+          alert("Phone Number verified !")
+      }
+      else{
+        alert("Wrong OTP. Enter Again")
+      }
+    })
   }
   check(){
     var ph = (this.registerUserData.phno).toString();
