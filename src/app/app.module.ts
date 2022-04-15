@@ -5,14 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from "./auth.guard";
 import { TokenInterceptorService } from "./token-interceptor.service";
 // import {NgxSpinnerModule} from 'ngx-spinner';
 import { FormsModule } from '@angular/forms';
 import { AdmindashComponent } from './components/admindash/admindash.component';
 import {NgCircleProgressModule} from 'ng-circle-progress';
-import { StatsComponent } from './components/stats/stats.component';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -20,9 +18,7 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent,
     AdmindashComponent,
-    StatsComponent,
     HomeComponent
   ],
   imports: [
